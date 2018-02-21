@@ -1,0 +1,18 @@
+<div class="card text-white bg-primary mb-3">
+    <div class="card-header">
+        Applied Filters
+    </div>
+    <div class="card-body">
+        <span *ngFor="let item of filterItems$ | async"
+            class="badge badge-light border mr-2">
+            {{ item.text }}
+            <i class="fas fa-times pointer ml-1"
+                (click)="onFilterRemove(item.type)">
+            </i>
+        </span>
+        <div class="text-center text-light" 
+            *ngIf="(filterItems$ | async)?.length === 0">
+            No Filters Applied
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<!-- Title -->
+<h4 class="mb-3 pb-3 border-bottom">
+    Results ({{ (data$ | async)?.total }})
+</h4>
+<!-- Pagination -->
+<nav *ngIf="(data$ | async)?.usePagination">
+    <ul class="pagination">
+        <li class="page-item" [ngClass]="{'disabled': !(data$ | async)?.isPrev}">
+            <a class="page-link" 
+                [routerLink]="(data$ | async)?.prevLink" 
+                [queryParams]="(data$ | async)?.prevParams"
+                queryParamsHandling="merge">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        </li>
+        <li class="page-item pagination-display">
+            Displaying {{ (data$ | async)?.displayRange }}
+        </li>
+        <li class="page-item" [ngClass]="{'disabled': !(data$ | async)?.isNext}">
+            <a class="page-link" 
+                [routerLink]="(data$ | async)?.nextLink" 
+                [queryParams]="(data$ | async)?.nextParams"
+                queryParamsHandling="merge">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- No Results Found Card -->
+<div class="card" *ngIf="(data$ | async)?.total === 0">
+    <div class="card-body text-center">
+        No Results Found. Try different filter options.
+     </div>
+</div>
+<!-- Result List -->
+<div class="row">
+    <div class="col-sm-6 col-xl-4" *ngFor="let car of (data$ |async)?.cars">
+        <div class="card mb-3">
+            <div class="card-header text-center">
+                {{ car.name | capitalcase }}
+            </div>
+            <div class="card-body">
+                <!-- Card Image placeholder -->
+                <div class="text-center mb-3">
+                    <div class="car-image-placeholder">
+                        <i class="fas fa-car fa-7x"></i>
+                    </div>
+                </div>
+                <!-- Specifications -->
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>Year</strong>
+                            </td>
+                            <td>{{ car.year }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>MPG</strong>
+                            </td>
+                            <td>{{ car.mpg }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>Horsepower</strong>
+                            </td>
+                            <td>{{ car.hp }}hp</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>Cylinders</strong>
+                            </td>
+                            <td>{{ car.cyl }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>0-60mph</strong>
+                            </td>
+                            <td>{{ car.acc }}s</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <strong>Weight</strong>
+                            </td>
+                            <td> {{ car.lbs | commaSeparateWhole }} lbs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

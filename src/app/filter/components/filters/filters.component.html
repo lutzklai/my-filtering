@@ -1,0 +1,167 @@
+<form (ngSubmit)="onFilterSubmit()" [formGroup]="form" class="mb-3">
+    <div class="card">
+        <div class="card-header">
+            <strong>Filters</strong>
+        </div>
+        <ul class="list-group list-group-flush">
+            <!-- Year -->
+            <li class="list-group-item" formGroupName="year">
+                <div>
+                    Year
+                    <i class="fas float-right pointer" [ngClass]="{'fa-chevron-down': filterHidden.year, 'fa-chevron-up': !filterHidden.year}"
+                        (click)="filterHidden.year = !filterHidden.year">
+                    </i>
+                </div>
+                <div [hidden]="filterHidden.year" class="mt-3 pt-3 border-top">
+                    <div class="form-row mb-2">
+                        <div class="col-sm-4">
+                            <label>From</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 1970" formControlName="from">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                            <label>To</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 2000" formControlName="to">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- Horsepower -->
+            <li class="list-group-item" formGroupName="hp">
+                <div>
+                    Horsepower
+                    <i class="fas float-right pointer" [ngClass]="{'fa-chevron-down': filterHidden.hp, 'fa-chevron-up': !filterHidden.hp}" (click)="filterHidden.hp = !filterHidden.hp">
+                    </i>
+                </div>
+                <div [hidden]="filterHidden.hp" class="mt-3 pt-3 border-top">
+                    <div class="form-row mb-2">
+                        <div class="col-sm-4">
+                            <label>From</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 0" formControlName="from">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                            <label>To</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 200" formControlName="to">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- MPG -->
+            <li class="list-group-item" formGroupName="mpg">
+                <div>
+                    MPG
+                    <i class="fas float-right pointer" [ngClass]="{'fa-chevron-down': filterHidden.mpg, 'fa-chevron-up': !filterHidden.mpg}"
+                        (click)="filterHidden.mpg = !filterHidden.mpg">
+                    </i>
+                </div>
+                <div [hidden]="filterHidden.mpg" class="mt-3 pt-3 border-top">
+                    <div class="form-row mb-2">
+                        <div class="col-sm-4">
+                            <label>From</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 0" formControlName="from">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                            <label>To</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 30" formControlName="to">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- Cylinder -->
+            <li class="list-group-item">
+                <div>
+                    Cylinder
+                    <i class="fas float-right pointer" [ngClass]="{'fa-chevron-down': filterHidden.cyl, 'fa-chevron-up': !filterHidden.cyl}"
+                        (click)="filterHidden.cyl = !filterHidden.cyl">
+                    </i>
+                </div>
+                <div [hidden]="filterHidden.cyl" class="mt-3 pt-3 border-top">
+                    <select class="form-control" formControlName="cyl">
+                        <option disabled>Amount</option>
+                        <option value="any">Any</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+            </li>
+            <!-- Weight (lbs) -->
+            <li class="list-group-item" formGroupName="lbs">
+                <div>
+                    Weight (lbs)
+                    <i class="fas float-right pointer" [ngClass]="{'fa-chevron-down': filterHidden.lbs, 'fa-chevron-up': !filterHidden.lbs}"
+                        (click)="filterHidden.lbs = !filterHidden.lbs">
+                    </i>
+                </div>
+                <div [hidden]="filterHidden.lbs" class="mt-3 pt-3 border-top">
+                    <div class="form-row mb-2">
+                        <div class="col-sm-4">
+                            <label>From</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 0" formControlName="from">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                            <label>To</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 4000" formControlName="to">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- Acceleration -->
+            <li class="list-group-item" formGroupName="acc">
+                <div>
+                    Acceleration
+                    <br> (0-60mph in seconds)
+                    <i class="fas float-right pointer" [ngClass]="{'fa-chevron-down': filterHidden.acc, 'fa-chevron-up': !filterHidden.acc}"
+                        (click)="filterHidden.acc = !filterHidden.acc">
+                    </i>
+                </div>
+                <div [hidden]="filterHidden.acc" class="mt-3 pt-3 border-top">
+                    <div class="form-row mb-2">
+                        <div class="col-sm-4">
+                            <label>From</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 0" formControlName="from">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                            <label>To</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="ex. 20" formControlName="to">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary float-right">Apply</button>
+            <button type="button" class="btn btn-secondary float-right mr-2" (click)="onClearForm()">Clear</button>
+        </div>
+    </div>
+</form>
